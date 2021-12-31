@@ -252,7 +252,7 @@
 					<plugin>
 						<groupId>io.fabric8</groupId>
 						<artifactId>docker-maven-plugin</artifactId>
-						<version>0.37.0</version>
+						<version>0.38.1</version>
 						<configuration>
 							<containerNamePattern>%a</containerNamePattern>
 							<showLogs>true</showLogs>
@@ -268,15 +268,15 @@
 										<ports>
 											<port>127.0.0.1:${it.mariadb.legacy.port}:3306</port>
 										</ports>
+										<volumes>
+											<bind>
+												<volume>libertybans-build-mariadb-legacy</volume>
+											</bind>
+										</volumes>
 										<wait>
 											<time>60000</time>
 											<log>Server socket created on IP: '::'</log>
 										</wait>
-										<volumes>
-											<bind>
-												<volume>libertybans-build</volume>
-											</bind>
-										</volumes>
 									</run>
 								</image>
 								<image>
@@ -289,15 +289,15 @@
 										<ports>
 											<port>127.0.0.1:${it.mariadb.modern.port}:3306</port>
 										</ports>
+										<volumes>
+											<bind>
+												<volume>libertybans-build-mariadb-modern</volume>
+											</bind>
+										</volumes>
 										<wait>
 											<time>60000</time>
 											<log>Server socket created on IP: '::'</log>
 										</wait>
-										<volumes>
-											<bind>
-												<volume>libertybans-build</volume>
-											</bind>
-										</volumes>
 									</run>
 								</image>
 								<image>
@@ -310,15 +310,15 @@
 										<ports>
 											<port>127.0.0.1:${it.mysql.port}:3306</port>
 										</ports>
+										<volumes>
+											<bind>
+												<volume>libertybans-build-mysql</volume>
+											</bind>
+										</volumes>
 										<wait>
 											<time>60000</time>
 											<log>/usr/sbin/mysqld: ready for connections. Version: '8.0.27'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL</log>
 										</wait>
-										<volumes>
-											<bind>
-												<volume>libertybans-build</volume>
-											</bind>
-										</volumes>
 									</run>
 								</image>
 								<image>
@@ -331,15 +331,15 @@
 										<ports>
 											<port>127.0.0.1:${it.postgres.legacy.port}:5432</port>
 										</ports>
+										<volumes>
+											<bind>
+												<volume>libertybans-build-postgres-legacy</volume>
+											</bind>
+										</volumes>
 										<wait>
 											<time>60000</time>
 											<log>listening on IPv4 address "0.0.0.0", port 5432</log>
 										</wait>
-										<volumes>
-											<bind>
-												<volume>libertybans-build</volume>
-											</bind>
-										</volumes>
 									</run>
 								</image>
 								<image>
@@ -352,15 +352,15 @@
 										<ports>
 											<port>127.0.0.1:${it.postgres.modern.port}:5432</port>
 										</ports>
+										<volumes>
+											<bind>
+												<volume>libertybans-build-postgres-modern</volume>
+											</bind>
+										</volumes>
 										<wait>
 											<time>60000</time>
 											<log>listening on IPv4 address "0.0.0.0", port 5432</log>
 										</wait>
-										<volumes>
-											<bind>
-												<volume>libertybans-build</volume>
-											</bind>
-										</volumes>
 									</run>
 								</image>
 								<image>
@@ -372,24 +372,83 @@
 										<ports>
 											<port>127.0.0.1:${it.cockroachdb.port}:26257</port>
 										</ports>
+										<volumes>
+											<bind>
+												<volume>libertybans-build-cockroachdb</volume>
+											</bind>
+										</volumes>
 										<wait>
 											<time>60000</time>
 										</wait>
-										<volumes>
-											<bind>
-												<volume>libertybans-build</volume>
-											</bind>
-										</volumes>
 									</run>
 								</image>
 							</images>
 							<volumes>
 								<volume>
-									<name>libertybans-build</name>
+									<name>libertybans-build-mariadb-legacy</name>
+									<driver>local</driver>
 									<opts>
 										<type>tmpfs</type>
 										<device>tmpfs</device>
 									</opts>
+									<labels>
+           								<volatileData>true</volatileData>
+         							</labels>
+								</volume>
+								<volume>
+									<name>libertybans-build-mariadb-modern</name>
+									<driver>local</driver>
+									<opts>
+										<type>tmpfs</type>
+										<device>tmpfs</device>
+									</opts>
+									<labels>
+           								<volatileData>true</volatileData>
+         							</labels>
+								</volume>
+								<volume>
+									<name>libertybans-build-mysql</name>
+									<driver>local</driver>
+									<opts>
+										<type>tmpfs</type>
+										<device>tmpfs</device>
+									</opts>
+									<labels>
+           								<volatileData>true</volatileData>
+         							</labels>
+								</volume>
+								<volume>
+									<name>libertybans-build-postgres-legacy</name>
+									<driver>local</driver>
+									<opts>
+										<type>tmpfs</type>
+										<device>tmpfs</device>
+									</opts>
+									<labels>
+           								<volatileData>true</volatileData>
+         							</labels>
+								</volume>
+								<volume>
+									<name>libertybans-build-postgres-modern</name>
+									<driver>local</driver>
+									<opts>
+										<type>tmpfs</type>
+										<device>tmpfs</device>
+									</opts>
+									<labels>
+           								<volatileData>true</volatileData>
+         							</labels>
+								</volume>
+								<volume>
+									<name>libertybans-build-cockroachdb</name>
+									<driver>local</driver>
+									<opts>
+										<type>tmpfs</type>
+										<device>tmpfs</device>
+									</opts>
+									<labels>
+           								<volatileData>true</volatileData>
+         							</labels>
 								</volume>
 							</volumes>
 						</configuration>
