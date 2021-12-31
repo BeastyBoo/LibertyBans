@@ -402,9 +402,6 @@
 										<type>tmpfs</type>
 										<device>tmpfs</device>
 									</opts>
-									<labels>
-           								<volatileData>true</volatileData>
-         							</labels>
 								</volume>
 								<volume>
 									<name>libertybans-build-mysql</name>
@@ -413,9 +410,6 @@
 										<type>tmpfs</type>
 										<device>tmpfs</device>
 									</opts>
-									<labels>
-           								<volatileData>true</volatileData>
-         							</labels>
 								</volume>
 								<volume>
 									<name>libertybans-build-postgres-legacy</name>
@@ -424,9 +418,6 @@
 										<type>tmpfs</type>
 										<device>tmpfs</device>
 									</opts>
-									<labels>
-           								<volatileData>true</volatileData>
-         							</labels>
 								</volume>
 								<volume>
 									<name>libertybans-build-postgres-modern</name>
@@ -435,9 +426,6 @@
 										<type>tmpfs</type>
 										<device>tmpfs</device>
 									</opts>
-									<labels>
-           								<volatileData>true</volatileData>
-         							</labels>
 								</volume>
 								<volume>
 									<name>libertybans-build-cockroachdb</name>
@@ -446,9 +434,6 @@
 										<type>tmpfs</type>
 										<device>tmpfs</device>
 									</opts>
-									<labels>
-           								<volatileData>true</volatileData>
-         							</labels>
 								</volume>
 							</volumes>
 						</configuration>
