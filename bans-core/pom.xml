@@ -476,6 +476,7 @@
 						<artifactId>maven-failsafe-plugin</artifactId>
 						<configuration>
 							<systemPropertyVariables>
+								<removeVolumes>true</removeVolumes>
 								<hsqldb.reconfig_logging>false</hsqldb.reconfig_logging>
 								<org.jooq.no-logo>true</org.jooq.no-logo>
 								<org.jooq.no-tips>true</org.jooq.no-tips>
